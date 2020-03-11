@@ -112,3 +112,52 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle(data) {
+  const article = document.createElement('div');
+  const title = document.createElement('h1');
+  const date = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const expand = document.createElement('span');
+
+  title.textContent = data.title;
+  date.textContent = data.date;
+  firstParagraph.textContent = data.firstParagraph;
+  secondParagraph.textContent = data.secondParagraph;
+  thirdParagraph.textContent = data.thirdParagraph;
+  expand.textContent = 'button';
+
+  article.classList.add('article');
+  date.classList.add('date');
+  expand.classList.add('expandButton');
+
+  article.append(title);
+  article.append(date);
+  article.append(firstParagraph);
+  article.append(secondParagraph);
+  article.append(thirdParagraph);
+  article.append(expand);
+
+  expand.addEventListener('click', (event) => {
+    article.classList.toggle('article-open');
+  })
+
+  return article;
+}
+
+const articles = document.querySelector('.articles');
+
+data.forEach(item => {
+  console.log('creating article...', item.title);
+  articles.append(createArticle(item));
+})
+
+
+document.createElement('div').classList.add('article');
+const inputForm = document.createElement('form');
+inputForm.setAttribute('action', '');
+inputForm.setAttribute('method', 'post');
+document.querySelector('body').append(inputForm);
+document.createElement('h2');
